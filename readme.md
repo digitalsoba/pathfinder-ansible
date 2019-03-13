@@ -49,7 +49,7 @@ Vagrant abstracts the process for creating a VM so we won't have access to direc
 
 If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file.
 
-To get started, clone this repo with `git clone inserturlhereplz`. In the terminal, navigate to each lab and complete the challenges. 
+To get started, clone this repo with `git clone https://github.com/digitalsoba/pathfinder-ansible.git`. In the terminal, navigate to each lab and complete the challenges. 
 
 ### Lab 1 - Creating a user
 Create a playbook that will update and upgrade apt packages. After creating a user name pathfinder. Create a home directory for pathfinder, add them to the sudo group, and set bash as their default shell. Create a file name hello.txt inside pathfinders directory
