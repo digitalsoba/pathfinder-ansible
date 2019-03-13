@@ -1,0 +1,24 @@
+---
+- name: Run the playbook tasks on the localhost
+  hosts: localhost
+  connection: local
+  become: true
+  tasks: 
+    - name: Begin lab 1
+      debug:
+        msg: Lab 1 started
+    - name: Update and upgrade
+      apt:
+        update_cache: true
+        upgrade: dist
+    - name: create pathfinder user
+      user:
+        name: pathfinder
+        createhome: yes
+        groups: sudo
+        shell: /bin/bash
+        state: present
+    - name: Create hello.txt
+      file:
+        path: /home/pathfinder/hello.txt
+        state: touch 

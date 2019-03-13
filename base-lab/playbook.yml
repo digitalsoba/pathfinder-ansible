@@ -1,0 +1,8 @@
+---
+- name: Run the playbook tasks on the localhost
+  hosts: all
+  become: true
+  tasks: 
+    - name: Base lab
+      debug:
+        msg: This is the base lab structure
