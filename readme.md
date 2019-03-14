@@ -8,6 +8,7 @@ Ansible is a configuration management tool that allows us to automate infrastruc
     - VBox guest addons
   - Vagrant
   - Ansible
+  - Or Docker
 
 ## Installing Virtualbox
 To install Virtualbox [here](https://www.virtualbox.org/wiki/Downloads) their download page and install it on your respective OS. Also, install the `VirtualBox 6.0.4 Oracle VM VirtualBox Extension Pack` after installing Virtualbox (This will help Vagrant)
@@ -16,7 +17,7 @@ To install Virtualbox [here](https://www.virtualbox.org/wiki/Downloads) their do
 Download the Vagrant binary [here](https://www.vagrantup.com/downloads.html)
 
 ## How it works
-Vagrant reads a Vagrantfile that will bootstrap the creation of a VM. Vagrant uses a base image they call boxes to create these VM. Inside the Vagrantfile contains syntax we delare for the machine such an private IP address and provisoners. For our case, we will provison with Ansible.
+Vagrant reads a Vagrantfile that will bootstrap the creation of a VM. Vagrant uses a base image they call boxes to create these VM. Inside the Vagrantfile contains syntax we declare for the machine such a private IP address and provisioners. For our case, we will provision with Ansible.
 
 ```shell
 # -*- mode: ruby -*-
@@ -48,7 +49,7 @@ From here we can run `vagrant ssh` to login into the machine and run commands. U
 Vagrant abstracts the process for creating a VM so we won't have access to directly ssh into the machine, this is why we use `vagrant ssh`. Because of this, we can't directly run an ansible playbook with `ansible-playbook playbook.yml` against the machine, instead, we'll use `vagrant provision`. 
 
 
-You can also use docker to run these labs in a standalone container, this requires ansible to run against itself. You can run the `ubunut:latest` image. For the lab you can run the command `docker run -it ubuntu:latest bash` to run a ubuntu container. If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file. Sample files for docker can be viewed in the ansible-lab-docker folder. Once finished with a lab you can exit the container or continue with the same container. If you're asked to visit a page on your browser, use [localhost](http://localhost)
+You can also use Docker to run these labs in a standalone container, this requires ansible to run against itself. You can run the `ubuntu:latest` image. For the lab you can run the command `docker run -it ubuntu: latest bash` to run a ubuntu container. If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file. Sample files for docker can be viewed in the ansible-lab-docker folder. Once finished with a lab you can exit the container or continue with the same container. If you're asked to visit a page on your browser, use [localhost](http://localhost)
 
 To get started, clone this repo with `git clone https://github.com/digitalsoba/pathfinder-ansible.git`. In the terminal, navigate to each lab and complete the challenges. 
 
@@ -64,7 +65,7 @@ Tasks:
     - Add them to sudo group
     - Create a hello.txt file inside pathfinders home directory
 
-In the machine, change users to pathfinder and verify you are logined as them pathfinder with `whoami` and change directory into your home. Do you see the hello.txt file?
+In the machine, change users to pathfinder and verify you are logged in as them pathfinder with `whoami` and change directory into your home. Do you see the hello.txt file?
 
 ### Lab 2
 Install a LAMP stack with Ansible. This should include Apache2, Mysql-client, and PHP. 
