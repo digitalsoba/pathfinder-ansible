@@ -47,7 +47,8 @@ From here we can run `vagrant ssh` to login into the machine and run commands. U
 ## Ansible labs
 Vagrant abstracts the process for creating a VM so we won't have access to directly ssh into the machine, this is why we use `vagrant ssh`. Because of this, we can't directly run an ansible playbook with `ansible-playbook playbook.yml` against the machine, instead, we'll use `vagrant provision`. 
 
-If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file.
+
+You can also use docker to run these labs in a standalone container, this requires ansible to run against itself. You can run the `ubunut:latest` image. For the lab you can run the command `docker run -it ubuntu:latest bash` to run a ubuntu container. If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file. Sample files for docker can be viewed in the ansible-lab-docker folder. Once finished with a lab you can exit the container or continue with the same container. If you're asked to visit a page on your browser, use [localhost](http://localhost)
 
 To get started, clone this repo with `git clone https://github.com/digitalsoba/pathfinder-ansible.git`. In the terminal, navigate to each lab and complete the challenges. 
 
@@ -91,6 +92,7 @@ Tasks:
 - Start Apache2 service
 - Create index.php page locally
 - Remove index.html from ansible node
+  - Note the default web directory for apache
 - Copy index.php into ansible node
 
 Visit your web browser and verify the php info page is shown correctly
