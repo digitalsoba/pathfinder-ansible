@@ -18,7 +18,7 @@ Download the Vagrant binary [here](https://www.vagrantup.com/downloads.html)
 ## How it works
 Vagrant reads a Vagrantfile that will bootstrap the creation of a VM. Vagrant uses a base image they call boxes to create these VM. Inside the Vagrantfile contains syntax we delare for the machine such an private IP address and provisoners. For our case, we will provison with Ansible.
 
-```d
+```shell
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -64,7 +64,7 @@ Tasks:
     - Add them to sudo group
     - Create a hello.txt file inside pathfinders home directory
 
-In the machine, change users to pathfinder and verify you are login in as them using `whoami` and change directory into your home.
+In the machine, change users to pathfinder and verify you are logined as them pathfinder with `whoami` and change directory into your home. Do you see the hello.txt file?
 
 ### Lab 2
 Install a LAMP stack with Ansible. This should include Apache2, Mysql-client, and PHP. 
