@@ -6,17 +6,3 @@
     - name: Begin lab 2
       debug:
         msg: Lab 2 started
-    - name: Install LAMP Stack
-      apt: 
-        name: "{{ packages }}"
-        state: present
-        update_cache: true
-      vars:
-        packages:
-          - apache2
-          - mysql-client
-          - php
-    - name: Start apache2
-      service:
-        name: apache2
-        state: started

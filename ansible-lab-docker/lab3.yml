@@ -7,25 +7,3 @@
     - name: Begin lab 3
       debug:
         msg: Lab 3 started
-    - name: Install LAMP Stack
-      apt: 
-        name: "{{ packages }}"
-        state: present
-        update_cache: true
-      vars:
-        packages:
-          - apache2
-          - mysql-client
-          - php
-    - name: Start apache2
-      service:
-        name: apache2
-        state: started
-    - name: Remove index.html
-      file:
-        path: /var/www/html/index.html
-        state: absent
-    - name: Copy index.php 
-      copy:
-        src: index.php
-        dest: /var/www/html
