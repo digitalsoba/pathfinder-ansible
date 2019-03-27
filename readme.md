@@ -118,7 +118,7 @@ To verify installation run
 
 ### Lab 3
 Create a index.php page like this on your local filesystem.
-```html
+```php
 <?php
 phpinfo();
 ?>
