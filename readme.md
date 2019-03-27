@@ -45,13 +45,38 @@ In your terminal run the command `vagrant init ubuntu/bionic64`. This will gener
 
 From here we can run `vagrant ssh` to login into the machine and run commands. Update the machine and install apache2. `sudo apt update && sudo apt install -y apache2`. Curl your localhost, what do you get? Exit the VM by typing `exit`. You can not destroy the machine by using the `vagrant destroy` 
 
+### Running labs in docker
+You can also use Docker to run these labs in a standalone container, this requires ansible to run against itself. You can use the `ubuntu:latest` image. For the lab you can run the command `docker run -it -p 80:80 ubuntu:latest bash` to run a ubuntu container. 
+
+#### Installing Ansible in a container
+```shell
+apt-get update
+apt-get install -y software-properties-common
+apt-add-repository --yes --update ppa:ansible/ansible
+apt-get install -y ansible
+```
+
+#### playbook.yml file config
+Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file. Sample files for docker can be viewed in the ansible-lab-docker folder. Once finished with a lab you can exit the container or continue with the same container. If you're asked to visit a page on your browser, use [localhost](http://localhost)
+
+Sample
+```yaml
+---
+- name: Run the playbook tasks on the localhost
+  hosts: localhost
+  connection: local
+  become: true
+  tasks: 
+```
+
 ## Ansible labs
 Vagrant abstracts the process for creating a VM so we won't have access to directly ssh into the machine, this is why we use `vagrant ssh`. Because of this, we can't directly run an ansible playbook with `ansible-playbook playbook.yml` against the machine, instead, we'll use `vagrant provision`. 
 
-
-You can also use Docker to run these labs in a standalone container, this requires ansible to run against itself. You can run the `ubuntu:latest` image. For the lab you can run the command `docker run -it ubuntu: latest bash` to run a ubuntu container. If you using docker you must update your container and install ansible. Change hosts to `hosts: localhost` and add `connection: local` to the `.yml` file. Sample files for docker can be viewed in the ansible-lab-docker folder. Once finished with a lab you can exit the container or continue with the same container. If you're asked to visit a page on your browser, use [localhost](http://localhost)
-
 To get started, clone this repo with `git clone https://github.com/digitalsoba/pathfinder-ansible.git`. In the terminal, navigate to each lab and complete the challenges. 
+
+
+## Ansible Modules
+[Modules](https://docs.ansible.com/ansible/latest/user_guide/modules_intro.html) is a core component of Ansible. They act as task/plugin that executes a certain unit of code or command in a playbook's task. These labs extensively use modules to configure servers so it's important to familiarize yourself with various modules. Documentation for each module provides an example and use cases that are valuable references when writing playbooks. 
 
 ### Lab 1 - Creating a user
 Create a playbook that will update and upgrade apt packages. After creating a user name pathfinder. Create a home directory for pathfinder, add them to the sudo group, and set bash as their default shell. Create a file name hello.txt inside pathfinders directory
@@ -65,6 +90,11 @@ Tasks:
     - Add them to sudo group
     - Create a hello.txt file inside pathfinders home directory
 
+Hints:
+  - [Apt module](https://docs.ansible.com/ansible/latest/modules/apt_module.html)
+  - [User module](https://docs.ansible.com/ansible/latest/modules/user_module.html)
+  - sudo is a group in Unix used as an administrator. This allows you to use privileged commands in the terminal that require higher privileges than a normal user
+
 In the machine, change users to pathfinder and verify you are logged in as them pathfinder with `whoami` and change directory into your home. Do you see the hello.txt file?
 
 ### Lab 2
@@ -76,6 +106,11 @@ Tasks:
     - mysql-client
     - php
   - Start apache2 service
+
+Hints:
+  - [Apt module](https://docs.ansible.com/ansible/latest/modules/apt_module.html)
+  - [User module](https://docs.ansible.com/ansible/latest/modules/user_module.html)
+  - [Service module](https://docs.ansible.com/ansible/latest/modules/service_module.html)
 
 To verify installation run 
   - `php --version`
@@ -96,7 +131,35 @@ Tasks:
   - Note the default web directory for apache
 - Copy index.php into ansible node
 
+Hints:
+  - [Apt module](https://docs.ansible.com/ansible/latest/modules/apt_module.html)
+  - [User module](https://docs.ansible.com/ansible/latest/modules/user_module.html)
+  - [Service module](https://docs.ansible.com/ansible/latest/modules/service_module.html)
+  - [File module](https://docs.ansible.com/ansible/latest/modules/file_module.html)
+  - [Copy module](https://docs.ansible.com/ansible/latest/modules/copy_module.html)
+
 Visit your web browser and verify the php info page is shown correctly
 
 ### Lab 4
 Create roles to add a pathfinder user and install a lamp stack. Create another role to install [Laravel](https://laravel.com/docs/5.8#installation) dependencies such as the required php modules, composer, and apache modifications. Create a final role to deploy a laravel project and serve it on localhost. 
+
+Hints:
+  - Install the laravel project in `/var/www/html`
+
+Apache file
+```
+<VirtualHost *:80>
+  ServerAdmin webmaster@localhost
+	ServerName localhost
+	DocumentRoot /var/www/html/public
+
+	<Directory /var/www/html/public>
+    Options +FollowSymlinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+	
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
