@@ -25,7 +25,7 @@ Vagrant reads a Vagrantfile that will bootstrap the creation of a VM. Vagrant us
 
 Vagrant.configure("2") do |config|
   # Using Ubuntu 18.04 bionic
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "bento/ubuntu-18.04"
 
   # Use IP private IP address 192.168.33.10
   config.vm.network "private_network", ip: "192.168.33.10"
@@ -41,7 +41,7 @@ end # End Vagrantfile
 ```
 
 ## Getting Started
-In your terminal run the command `vagrant init ubuntu/bionic64`. This will generate a default Vagrantfile. Run `vagrant up` to start the machine. This will download the Ubuntu 18.04 Bionic box and create a VM in VirtualBox. To verify the box is up, run `vagrant status` or view Virtualbox to see the VM.
+In your terminal run the command `vagrant init bento/ubuntu-18.04`. This will generate a default Vagrantfile. Run `vagrant up` to start the machine. This will download the Ubuntu 18.04 Bionic box and create a VM in VirtualBox. To verify the box is up, run `vagrant status` or view Virtualbox to see the VM.
 
 From here we can run `vagrant ssh` to login into the machine and run commands. Update the machine and install apache2. `sudo apt update && sudo apt install -y apache2`. Curl your localhost, what do you get? Exit the VM by typing `exit`. You can not destroy the machine by using the `vagrant destroy` 
 
