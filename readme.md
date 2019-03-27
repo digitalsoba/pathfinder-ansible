@@ -76,7 +76,7 @@ To get started, clone this repo with `git clone https://github.com/digitalsoba/p
 
 
 ## Ansible Modules
-[Modules](https://docs.ansible.com/ansible/latest/user_guide/modules_intro.html) is a core component of Ansible. They act as task/plugin that executes a certain unit of code or command in a playbook's task. These labs extensively use modules to configure servers so it's important to familiarize yourself with various modules. Documentation for each module provides an example and use cases that are valuable references when writing playbooks. 
+[Modules](https://docs.ansible.com/ansible/latest/user_guide/modules_intro.html) is a core component of Ansible. They act as tasks/plugins that executes a certain unit of code or command in a playbook's task. These labs extensively use modules to configure servers so it's important to familiarize yourself with various modules. Documentation for each module provides an example and use cases that are valuable references when writing playbooks. 
 
 ### Lab 1 - Creating a user
 Create a playbook that will update and upgrade apt packages. After creating a user name pathfinder. Create a home directory for pathfinder, add them to the sudo group, and set bash as their default shell. Create a file name hello.txt inside pathfinders directory
