@@ -97,3 +97,6 @@ Tasks:
 - Copy index.php into ansible node
 
 Visit your web browser and verify the php info page is shown correctly
+
+### Lab 4
+Create roles to add a pathfinder user and install a lamp stack. Create another role to install [Laravel](https://laravel.com/docs/5.8#installation) dependencies such as the required php modules, composer, and apache modifications. Create a final role to deploy a laravel project and serve it on localhost. 

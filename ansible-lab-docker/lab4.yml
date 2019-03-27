@@ -1,0 +1,9 @@
+---
+- name: Run the playbook tasks on the localhost
+  hosts: localhost
+  connection: local
+  become: true
+  tasks: 
+    - name: Begin lab 4
+      debug:
+        msg: Lab 4 started
