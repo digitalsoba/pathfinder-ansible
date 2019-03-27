@@ -149,17 +149,17 @@ Hints:
 Apache file
 ```
 <VirtualHost *:80>
-  ServerAdmin webmaster@localhost
-	ServerName localhost
-	DocumentRoot /var/www/html/public
+ServerAdmin webmaster@localhost
+ServerName localhost
+DocumentRoot /var/www/html/public
 
-	<Directory /var/www/html/public>
-    Options +FollowSymlinks
-    AllowOverride All
-    Require all granted
-  </Directory>
+<Directory /var/www/html/public>
+  Options +FollowSymlinks
+  AllowOverride All
+  Require all granted
+</Directory>
 	
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
