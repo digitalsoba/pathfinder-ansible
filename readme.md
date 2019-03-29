@@ -147,7 +147,7 @@ Hints:
   - Install the laravel project in `/var/www/html`
 
 Apache file
-```
+```apacheconf
 <VirtualHost *:80>
 ServerAdmin webmaster@localhost
 ServerName localhost
