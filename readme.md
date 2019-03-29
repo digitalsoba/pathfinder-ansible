@@ -53,7 +53,7 @@ You can also use Docker to run these labs in a standalone container, this requir
 apt-get update
 apt-get install -y software-properties-common
 apt-add-repository --yes --update ppa:ansible/ansible
-apt-get install -y ansible
+apt-get install -y ansible vim git
 ```
 
 #### playbook.yml file config
