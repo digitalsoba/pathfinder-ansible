@@ -145,6 +145,7 @@ Create roles to add a pathfinder user and install a lamp stack. Create another r
 
 Hints:
   - Install the laravel project in `/var/www/html`
+  - [Roles docs](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
 
 Apache file
 ```apacheconf
